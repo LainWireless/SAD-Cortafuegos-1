@@ -293,6 +293,11 @@ curl www.google.com
 ```
 ![Firewall](capturas/14-5.png)
 
+Para bloquear también el acceso por el puerto 443, añadimos la siguiente regla:
+```bash
+iptables -I OUTPUT 5 -d 37.187.119.60 -p tcp --dport 443 -m state --state NEW,ESTABLISHED -j DROP
+```
+
 ### 5. Permite mandar un correo usando nuestro servidor de correo: babuino-smtp. Para probarlo ejecuta un telnet bubuino-smtp.gonzalonazareno.org 25.
 
 Lo primero que haremos será crear las reglas Iptables:
